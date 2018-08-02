@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en">
 {% load staticfiles %}
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Enrique BLog</title>
+    <title>{{details.title}}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -28,7 +28,7 @@
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="#">Twitter</a>
             <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-            <a class="nav-item nav-link" href="{% url 'allblogs' % }">Blog</a>
+            <a class="nav-item nav-link active" href="{% url 'allblogs' % }">Blog</a>
 
           </div>
         </div>
@@ -36,41 +36,25 @@
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hola Soy Enrique Cordero </h1>
-          <p class="lead text-muted">Hola mi nombre es enrique Cordero y adoro hacer pagina en Django</p>
-          <p>
-            <a href="mailto:ecs5000@hotmail.com" class="btn btn-primary my-2">Email Me</a>
-          </p>
-          <img src="{% static 'toons.jpg' %}" />
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-         <div class="row">
-
-      {% for job in jobs.all %}
-
-            <div class="col-md-4" >
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src=" {{ job.image.url }} "/>
-                <div class="card-body">
-                  <p class="card-text"> {{ job.summary }}</p>
-
-                </div>
-              </div>
-            </div>
-    {%endfor%}
-
-
-          </div>
-        </div>
-      </div>
-
+    <div class="container">
+        <h1 class="text-center pt-3">{{ details.title }}</h1>
+        <p>{{ details.pub_date}}</p>
+        <img class="img-fluid" src="{{ details.image.url }}"/>
+        <p>{{ details.body}}</p>
+     </div>
     </main>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <footer class="text-muted">
       <div class="container text-center">
